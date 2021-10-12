@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
@@ -18,7 +17,6 @@ import { ClientsService } from './clients.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    DataTablesModule,
     TemplateModule,
     AppRoutingModule,
     ClientsModule

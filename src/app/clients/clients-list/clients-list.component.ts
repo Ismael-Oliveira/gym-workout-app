@@ -83,6 +83,25 @@ export class ClientsListComponent implements OnInit, OnDestroy {
   constructor(private service: ClientsService, private router: Router) { }
   
   ngOnInit() {
+    this.getAllClients();
+    this.dtOptions = {
+      dom: '<"top"B>rt<"bottom"f>rt<"bottom"lp><"clear">',
+      lengthMenu: [5, 10, 25, 50, 100],
+      pagingType: 'full_numbers',
+      processing: true,
+      language: {
+        search: "Pesquisar",
+        emptyTable: "Sem dados disponíveis.",
+        lengthMenu: "Exibindo _MENU_ entradas",
+        info: "Exibindo de _START_ até _END_, contém: _TOTAL_ entradas",
+        paginate: {
+          first:      "Primeiro",
+          last:       "Ultimo",
+          next:       "Próximo",
+          previous:   "Anterior"
+        },
+      }
+    };
   }
   
   ngOnDestroy(): void {
@@ -93,8 +112,13 @@ export class ClientsListComponent implements OnInit, OnDestroy {
     this.router.navigate(["clients-form"]);
   }
 
-  // getAllClients() {
-  //   this.clients = this.service.getClients();
-  //   this.dtTrigger.next();
-  // }
+  getAllClients(): void {
+    this.service
+    .getClients()
+    .subscribe((response: any) => {
+      this.clients = response;
+      // initiate our data table
+      this.dtTrigger.next(true);
+    });
+  }
 }

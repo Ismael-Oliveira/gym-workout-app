@@ -3,4 +3,5 @@ export class Client {
     name: string;
     birthDate: String;
     typeUser: string;
+    email: string;
 }
