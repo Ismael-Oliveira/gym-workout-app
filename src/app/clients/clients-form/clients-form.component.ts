@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientsService } from 'src/app/clients.service';
+import { Client } from '../client';
 
 @Component({
   selector: 'app-clients-form',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientsFormComponent implements OnInit {
 
-  constructor() { }
+  client: Client;
+  success: Boolean = false;
+  errors: string[] = [];
+
+  constructor(private service: ClientsService) {
+    this.client = new Client();
+    this.client.typeUser = "CLIENT";
+  }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    this.service
+    .save(this.client)
+    .subscribe(response => {
+      this.success = true;
+      this.errors = [];
+      this.client = response;
+    }, errorResponse => {
+      this.errors = errorResponse.error;
+      this.success = false;
+        this.errors = errorResponse.error;
+        console.log(errorResponse);
+    });
+  }
 }

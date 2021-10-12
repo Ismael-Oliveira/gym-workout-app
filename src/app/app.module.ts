@@ -1,20 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
 import { AppRoutingModule } from './app-routing.module';
+import { ClientsModule } from './clients/clients.module';
+import { HomeComponent } from './home/home.component';
+import { ClientsService } from './clients.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    DataTablesModule,
     TemplateModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ClientsModule
   ],
-  providers: [],
+  providers: [
+    ClientsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

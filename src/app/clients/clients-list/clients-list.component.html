@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="mt-4">Alunos</h1>
+    <div class="alert alert-secondary" role="alert">
+        Consulta
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="btn btn-warning" (click)="newClient()">
+                        <i class="fas fa-plus me-1"></i>
+                        Novo
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table datatable class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Country</th>
+                      <th>Club Name</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of jsonData">
+                      <td>{{item.playerName}}</td>
+                      <td>{{item.playerCountry}}</td>
+                      <td>{{item.playerClub}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
